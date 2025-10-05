@@ -1,0 +1,12 @@
+name = "casei-backend"
+main = "src/index.js"
+compatibility_date = "2025-10-04"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "casei-db"
+database_id = "your-database-id"  # 从Dashboard复制
+
+[[r2_buckets]]
+binding = "UPLOADS_BUCKET"
+bucket_name = "casei-uploads"  # 您的R2桶名
