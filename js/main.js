@@ -3,7 +3,8 @@ document.addEventListener("DOMContentLoaded", () => {
   initVideo();
   initUploadPreview();
   initProducts();
-  initThemeToggle();  // Add this line!
+  initThemeToggle();
+  updateCartDisplay();  // 初始化购物车
 });
 
 /* ========== 顶部菜单（移动端抽屉） ========== */
@@ -37,7 +38,6 @@ function initVideo(){
   v.muted = true; v.playsInline = true; v.setAttribute("webkit-playsinline","true");
   const tryPlay = () => v.play().catch(()=>{});
   tryPlay();
-  // 首次交互后再尝试播放，兼容部分移动浏览器策略
   const oncePlay = () => { tryPlay(); window.removeEventListener("touchstart", oncePlay); window.removeEventListener("click", oncePlay); };
   window.addEventListener("touchstart", oncePlay, { once:true, passive:true });
   window.addEventListener("click", oncePlay, { once:true });
@@ -139,7 +139,7 @@ function setupProducts(products){
       dot.addEventListener("click", () => {
         update(i);
         stopAuto();
-        setTimeout(startAuto, 5000); // 手动后延迟恢复
+        setTimeout(startAuto, 5000);
       });
       dotsContainer.appendChild(dot);
     });
@@ -169,7 +169,6 @@ function setupProducts(products){
         const p = slidesData[index]?.price;
         priceEl.textContent = (typeof p === "number") ? `$${p}` : priceEl.textContent;
       }
-      // 预加载下一张
       const nextImg = new Image();
       nextImg.src = slidesData[(index + 1) % totalSlides].image;
       if(announce) liveRegion.textContent = `Slide ${index + 1} of ${totalSlides}`;
@@ -177,7 +176,7 @@ function setupProducts(products){
       pauseBtn.setAttribute("aria-label", paused ? "Play autoplay" : "Pause autoplay");
     }
 
-    function scheduleNext(delay = 5000){ // 调整为5秒
+    function scheduleNext(delay = 5000){
       if(timer) clearTimeout(timer);
       timer = setTimeout(() => {
         update(index + 1);
@@ -200,12 +199,12 @@ function setupProducts(products){
     leftBtn.addEventListener("click", () => { 
       update(index - 1); 
       stopAuto(); 
-      setTimeout(startAuto, 5000); // 延迟5秒恢复
+      setTimeout(startAuto, 5000);
     });
     rightBtn.addEventListener("click", () => { 
       update(index + 1); 
       stopAuto(); 
-      setTimeout(startAuto, 5000); 
+      setTimeout(startAuto, 5000);
     });
 
     pauseBtn.addEventListener("click", () => {
@@ -235,7 +234,7 @@ function setupProducts(products){
       if(d > 50) update(index - 1);
       else if(d < -50) update(index + 1);
       else update(index);
-      setTimeout(startAuto, 5000); // 触摸后延迟恢复
+      setTimeout(startAuto, 5000);
     });
 
     // 键盘
@@ -255,6 +254,26 @@ function setupProducts(products){
     observer.observe(card);
 
     update(0);
+
+    // 添加到购物车
+    const addBtn = card.querySelector(".add-to-cart");
+    addBtn.addEventListener("click", () => {
+      const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+      const item = {
+        id: product.id,
+        name: product.name,
+        variant: index,
+        image: slidesData[index].image,
+        price: slidesData[index].price,
+        quantity: 1
+      };
+      const existing = cart.find(i => i.id === item.id && i.variant === item.variant);
+      if (existing) existing.quantity++;
+      else cart.push(item);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      updateCartDisplay();
+      alert("Added to cart!");
+    });
   });
 }
 
@@ -266,7 +285,6 @@ function initThemeToggle() {
   let currentTheme = localStorage.getItem("theme");
   const systemDark = window.matchMedia("(prefers-color-scheme: dark)");
 
-  // Set initial theme with fallback to system
   if (!currentTheme) {
     currentTheme = systemDark.matches ? "dark" : "light";
   }
@@ -274,9 +292,8 @@ function initThemeToggle() {
   button.textContent = currentTheme === "dark" ? "☀️" : "🌙";
   button.setAttribute("aria-label", currentTheme === "dark" ? "Switch to light mode" : "Switch to dark mode");
 
-  // Listener for system changes
   systemDark.addEventListener("change", (e) => {
-    if (!localStorage.getItem("theme")) {  // Only auto-switch if no user preference
+    if (!localStorage.getItem("theme")) {
       const newTheme = e.matches ? "dark" : "light";
       html.setAttribute("data-theme", newTheme);
       button.textContent = newTheme === "dark" ? "☀️" : "🌙";
@@ -285,7 +302,7 @@ function initThemeToggle() {
   });
 
   button.addEventListener("click", () => {
-    html.classList.add("theme-transition");  // Add for smooth CSS transition
+    html.classList.add("theme-transition");
     currentTheme = currentTheme === "dark" ? "light" : "dark";
     html.setAttribute("data-theme", currentTheme);
     localStorage.setItem("theme", currentTheme);
@@ -294,3 +311,68 @@ function initThemeToggle() {
     setTimeout(() => html.classList.remove("theme-transition"), 300);
   });
 }
+
+/* ========== 购物车功能 ========== */
+function updateCartDisplay() {
+  const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+  document.getElementById("cart-count").textContent = cart.reduce((sum, i) => sum + i.quantity, 0);
+  const itemsEl = document.getElementById("cart-items");
+  itemsEl.innerHTML = cart.map((item, idx) => `
+    <div class="cart-item">
+      <img src="${item.image}" alt="${item.name}">
+      <div>${item.name} (Variant ${item.variant + 1}) - $${item.price} x ${item.quantity}</div>
+      <button class="remove-btn" data-index="${idx}">Remove</button>
+    </div>
+  `).join("");
+  const total = cart.reduce((sum, i) => sum + i.price * i.quantity, 0);
+  document.querySelector(".total").textContent = `Total: $${total}`;
+  document.querySelectorAll(".remove-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      cart.splice(btn.dataset.index, 1);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      updateCartDisplay();
+    });
+  });
+}
+
+// 联系表单提交到后端
+document.getElementById("contact-form").addEventListener("submit", async e => {
+  e.preventDefault();
+  const data = { 
+    name: e.target[0].value, 
+    email: e.target[1].value, 
+    message: e.target[2].value 
+  };
+  const res = await fetch('https://casei-backend.youraccount.workers.dev/contact', {  // 替换为您的Workers URL
+    method: 'POST', 
+    headers: { 'Content-Type': 'application/json' }, 
+    body: JSON.stringify(data)
+  });
+  if (res.ok) alert('Sent!');
+});
+
+// 自定义上传（表单已设置action，但添加JS预览后提交）
+document.getElementById("custom-form").addEventListener("submit", async e => {
+  e.preventDefault();
+  const formData = new FormData(e.target);
+  const res = await fetch('https://casei-backend.youraccount.workers.dev/upload', {  // 替换URL
+    method: 'POST', 
+    body: formData
+  });
+  if (res.ok) alert('Uploaded!');
+});
+
+// 结账
+document.getElementById("checkout-btn").addEventListener("click", async () => {
+  const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+  if (cart.length === 0) return alert("Cart empty");
+  const data = { cart, userId: 'anonymous' };  // 可添加用户ID
+  const res = await fetch('https://casei-backend.youraccount.workers.dev/checkout', { 
+    method: 'POST', 
+    headers: { 'Content-Type': 'application/json' }, 
+    body: JSON.stringify(data)
+  });
+  const { sessionId } = await res.json();
+  const stripe = Stripe('your-publishable-key');  // 替换Stripe公钥
+  stripe.redirectToCheckout({ sessionId });
+});
