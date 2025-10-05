@@ -1,52 +1,50 @@
 {
-  "settings": {
-    "currency": "USD"
-  },
+  "settings": { "currency": "USD" },
   "products": [
     {
       "id": "jewelry",
       "name": "Jewelry",
       "images": [
-        "assets/images/jewelry/1.jpg",
-        "assets/images/jewelry/2.jpg",
-        "assets/images/jewelry/3.jpg",
-        "assets/images/jewelry/4.jpg",
-        "assets/images/jewelry/5.jpg",
-        "assets/images/jewelry/6.jpg",
-        "assets/images/jewelry/7.jpg"
+        "/assets/images/jewelry/1.jpg",
+        "/assets/images/jewelry/2.jpg",
+        "/assets/images/jewelry/3.jpg",
+        "/assets/images/jewelry/4.jpg",
+        "/assets/images/jewelry/5.jpg",
+        "/assets/images/jewelry/6.jpg",
+        "/assets/images/jewelry/7.jpg"
       ],
-      "price": [22, 24, 26, 28, 30, 32, 34],
-      "stock": [10, 8, 5, 3, 0, 10, 7]
+      "price": [22,24,26,28,30,32,34],
+      "stock": [10,8,5,3,0,10,7]
     },
     {
       "id": "bag",
       "name": "Bag",
       "images": [
-        "assets/images/bag/1.jpg",
-        "assets/images/bag/2.jpg",
-        "assets/images/bag/3.jpg",
-        "assets/images/bag/4.jpg",
-        "assets/images/bag/5.jpg",
-        "assets/images/bag/6.jpg",
-        "assets/images/bag/7.jpg"
+        "/assets/images/bag/1.jpg",
+        "/assets/images/bag/2.jpg",
+        "/assets/images/bag/3.jpg",
+        "/assets/images/bag/4.jpg",
+        "/assets/images/bag/5.jpg",
+        "/assets/images/bag/6.jpg",
+        "/assets/images/bag/7.jpg"
       ],
-      "price": [35, 37, 39, 41, 43, 45, 49],
-      "stock": [10, 8, 5, 3, 0, 10, 7]
+      "price": [35,37,39,41,43,45,49],
+      "stock": [10,8,5,3,0,10,7]
     },
     {
       "id": "leather",
       "name": "Leather Goods",
       "images": [
-        "assets/images/leather/1.jpg",
-        "assets/images/leather/2.jpg",
-        "assets/images/leather/3.jpg",
-        "assets/images/leather/4.jpg",
-        "assets/images/leather/5.jpg",
-        "assets/images/leather/6.jpg",
-        "assets/images/leather/7.jpg"
+        "/assets/images/leather/1.jpg",
+        "/assets/images/leather/2.jpg",
+        "/assets/images/leather/3.jpg",
+        "/assets/images/leather/4.jpg",
+        "/assets/images/leather/5.jpg",
+        "/assets/images/leather/6.jpg",
+        "/assets/images/leather/7.jpg"
       ],
-      "price": [60, 65, 70, 75, 80, 85, 90],
-      "stock": [10, 8, 5, 3, 0, 10, 7]
+      "price": [60,65,70,75,80,85,90],
+      "stock": [10,8,5,3,0,10,7]
     }
   ]
-} 
+}
