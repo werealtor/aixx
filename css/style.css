@@ -13,29 +13,29 @@
 [data-theme="dark"] {
   --bg: #0b0b0b; 
   --text: #ffffff; 
-  --muted: #b8b8b8; /* Brightened slightly from #a8a8a8 for better contrast (~10:1 ratio on bg) */
-  --line: rgba(255,255,255,.12); /* Increased opacity for crisper dividers without harshness */
-  --tone: #1c1c1e; /* Slightly lighter than #1a1a1a for more noticeable hovers */
+  --muted: #b8b8b8;
+  --line: rgba(255,255,255,.12);
+  --tone: #1c1c1e;
   --tone-rgb: 28,28,30;
-  --brand: #5a9dff; /* Tweaked to a softer, more vibrant blue for dark mode—avoids overly electric feel */
-  --shadow: 0 2px 8px rgba(0,0,0,.15); /* Switched to black-based shadow for deeper, more natural depth in dark mode */
+  --brand: #5a9dff;
+  --shadow: 0 2px 8px rgba(0,0,0,.15);
 }
 
 /* Media Adjustments for Dark Mode */
 [data-theme="dark"] .slide img,
 [data-theme="dark"] .hero-media {
-  filter: brightness(0.92) contrast(1.05); /* Subtle dimming to reduce glare on bright images/videos */
+  filter: brightness(0.92) contrast(1.05);
 }
 
 /* Enhanced Interactivity */
 [data-theme="dark"] .btn {
-  background: transparent; /* Set to transparent in dark mode */
-  border-width: 2px; /* Slightly thicker border for visibility */
+  background: transparent;
+  border-width: 2px;
 }
 [data-theme="dark"] .btn:hover {
-  background: rgba(var(--tone-rgb), 0.5); /* Semi-transparent hover for feedback */
+  background: rgba(var(--tone-rgb), 0.5);
   border-color: var(--brand);
-  box-shadow: 0 0 0 2px rgba(90,157,255,.2); /* Added subtle glow for better feedback */
+  box-shadow: 0 0 0 2px rgba(90,157,255,.2);
 }
 [data-theme="dark"] .btn.alt {
   background: transparent;
@@ -43,28 +43,28 @@
   color: var(--brand);
 }
 [data-theme="dark"] .btn.alt:hover {
-  background: rgba(var(--brand-rgb), 0.2); /* Semi-transparent brand hover */
-  color: #ffffff; /* White text for readability */
+  background: rgba(var(--brand-rgb), 0.2);
+  color: #ffffff;
 }
 
 /* Carousel Dots/Arrows/Pause in Dark Mode */
 [data-theme="dark"] .dot {
-  background: rgba(255,255,255,.4); /* Lowered default opacity for subtlety */
+  background: rgba(255,255,255,.4);
 }
 [data-theme="dark"] .dot.active,
 [data-theme="dark"] .dot:hover {
-  background: rgba(255,255,255,.85); /* Brighter active/hover */
+  background: rgba(255,255,255,.85);
 }
 [data-theme="dark"] .nav-arrow {
-  background: transparent; /* Changed to transparent */
-  border: 1px solid rgba(255,255,255,.3); /* Added border for visibility */
+  background: transparent;
+  border: 1px solid rgba(255,255,255,.3);
   box-shadow: 0 2px 8px rgba(0,0,0,.25);
 }
 [data-theme="dark"] .nav-arrow:hover {
-  background: rgba(255,255,255,.1); /* Slight fill on hover */
+  background: rgba(255,255,255,.1);
 }
 [data-theme="dark"] .pause-btn {
-  background: transparent; /* Changed to transparent */
+  background: transparent;
   border: 1px solid rgba(255,255,255,.3);
 }
 [data-theme="dark"] .pause-btn:hover {
@@ -74,35 +74,35 @@
 /* Form Inputs in Dark Mode */
 [data-theme="dark"] .input,
 [data-theme="dark"] .textarea {
-  background: transparent; /* Set to transparent for consistency */
+  background: transparent;
   border-color: var(--line);
-  border-width: 2px; /* Thicker border */
+  border-width: 2px;
 }
 [data-theme="dark"] .input:focus,
 [data-theme="dark"] .textarea:focus {
   border-color: var(--brand);
-  box-shadow: 0 0 0 2px rgba(90,157,255,.25); /* Softer focus ring */
+  box-shadow: 0 0 0 2px rgba(90,157,255,.25);
 }
 
 /* Pills and Muted Text */
 [data-theme="dark"] .pill {
   border-color: var(--line);
-  color: #c0c0c0; /* Brightened from #616161 for better legibility */
-  background: transparent; /* Ensure transparent */
+  color: #c0c0c0;
+  background: transparent;
 }
 [data-theme="dark"] .file-name,
 [data-theme="dark"] .helper {
-  color: var(--muted); /* Uses updated --muted */
+  color: var(--muted);
 }
 
 /* Theme Toggle Button in Dark Mode */
 [data-theme="dark"] #theme-toggle {
-  background: transparent; /* Set to transparent */
-  border-width: 2px; /* Thicker border */
+  background: transparent;
+  border-width: 2px;
   border-color: var(--line);
 }
 [data-theme="dark"] #theme-toggle:hover {
-  background: rgba(var(--tone-rgb), 0.3); /* Semi-transparent hover */
+  background: rgba(var(--tone-rgb), 0.3);
   border-color: var(--brand);
 }
 
@@ -149,7 +149,7 @@ h1,h2,h3,.title{
 .top-nav a:hover{color:var(--text);}
 .top-nav-wrap{display:contents}
 
-/* Mobile drawer menu (z-index 高于视频) */
+/* Mobile drawer menu */
 @media (max-width:768px){
   .menu-icon{display:block}
   .top-nav-wrap{
@@ -185,7 +185,7 @@ h1,h2,h3,.title{
   border-radius:16px;
   box-shadow:var(--shadow);
   overflow:hidden;
-  z-index:1;                       /* 低于菜单层 */
+  z-index:1;
 }
 .hero-media{
   position:absolute;inset:0;width:100%;height:100%;
@@ -193,21 +193,21 @@ h1,h2,h3,.title{
 }
 .hero-cta{text-align:center;padding:16px 20px}
 .hero-cta h1{font-size:var(--fs-h1)}
-.hero-cta p{color:var(--muted);font-size:14px;margin-top:6px;font-family:var(--font-serif);font-style:italic;} /* 优化为衬线 + 斜体 */
+.hero-cta p{color:var(--muted);font-size:14px;margin-top:6px;font-family:var(--font-serif);font-style:italic;}
 .nav{margin-top:10px;display:flex;justify-content:center;gap:12px;}
 .btn{
   border:1px solid var(--line); background:var(--bg); padding:10px 16px;
   border-radius:999px; font-weight:600; letter-spacing:.5px; transition:background .15s, color .15s;
-  font-family:var(--font-serif); /* 统一衬线字体 */
+  font-family:var(--font-serif);
   color:var(--text);
 }
 .btn:hover{background:var(--tone);border-color:var(--brand);}
 .btn.alt{
-  background:transparent; /* 改为透明背景 */
-  border:1px solid var(--brand); /* 边框风格 */
+  background:transparent;
+  border:1px solid var(--brand);
   color:var(--brand);
 }
-.btn.alt:hover{background:var(--brand);color:#fff;} /* hover 填充品牌色 */
+.btn.alt:hover{background:var(--brand);color:#fff;}
 .btn.block{width:100%}
 
 /* Sections */
@@ -223,25 +223,25 @@ h2.title,#custom h2,#about h2,#contact h2{font-size:var(--fs-h2);text-align:cent
 .slide{min-width:100%;aspect-ratio:16/9;position:relative}
 .slide img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 
-/* Arrows: 只显示箭头，去掉背景 */
+/* Arrows */
 .nav-arrow{
   position:absolute;top:50%;transform:translateY(-50%);
-  background:transparent; /* 去掉背景 */
+  background:transparent;
   color:#fff; border:0;
-  font-size:18px; /* 减小字体大小 */
-  line-height:1; padding:6px 10px; /* 减小padding，使更紧凑 */
-  border-radius:999px; /* 改为圆形，更精简 */
-  cursor:pointer; box-shadow:none; /* 去掉阴影 */
+  font-size:18px;
+  line-height:1; padding:6px 10px;
+  border-radius:999px;
+  cursor:pointer; box-shadow:none;
   transition:background .2s ease, opacity .2s ease, transform .15s ease, color .15s;
-  opacity:.8; /* 降低默认不透明度 */
+  opacity:.8;
   z-index:10; -webkit-tap-highlight-color:transparent;
 }
-.nav-arrow.left{left:8px} .nav-arrow.right{right:8px} /* 靠近边缘 */
+.nav-arrow.left{left:8px} .nav-arrow.right{right:8px}
 .nav-arrow:active{transform:translateY(-50%) scale(.96)}
 @media (hover:hover) and (pointer:fine){
   .nav-arrow{opacity:0}
   .main-viewport:hover .nav-arrow{opacity:1}
-  .nav-arrow:hover{color:#ddd;} /* hover 时略微变色以提供反馈 */
+  .nav-arrow:hover{color:#ddd;}
 }
 .nav-arrow:disabled{
   opacity:.35; cursor:default; color:#888;
@@ -276,7 +276,7 @@ h2.title,#custom h2,#about h2,#contact h2{font-size:var(--fs-h2);text-align:cent
 .pills{display:flex;justify-content:center;gap:6px;flex-wrap:wrap;margin:8px 0}
 .pill{border:1px solid var(--line);color:#616161;border-radius:999px;padding:4px 10px;font-size:12px}
 
-/* Price（衬线 + 加粗） */
+/* Price */
 .price{
   font-family:var(--font-serif);
   font-weight:700;
@@ -340,3 +340,11 @@ footer{border-top:1px solid var(--line);padding:20px;text-align:center;color:#8a
   background: var(--tone);
   border-color: var(--brand);
 }
+
+/* Cart styles */
+#cart-items { display: grid; gap: 12px; }
+.cart-item { border: 1px solid var(--line); padding: 12px; display: flex; justify-content: space-between; }
+.cart-item img { width: 80px; height: auto; }
+.total { font-weight: bold; margin: 16px 0; text-align: right; }
+.cart-icon { font-size: 20px; position: relative; }
+#cart-count { position: absolute; top: -8px; right: -8px; background: var(--brand); color: #fff; border-radius: 50%; padding: 2px 6px; font-size: 12px; }
