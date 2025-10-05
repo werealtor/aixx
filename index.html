@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Minimal, premium, personal cases and accessories designed by Aixx in California. Shop jewelry, bags, leather goods, and customize your own." />
+  <meta name="keywords" content="custom cases, premium accessories, jewelry, bags, leather goods" />
+  <meta name="theme-color" content="#001f3f" />
   <title>Case&i — Minimal · Premium · Personal</title>
 
   <!-- Fonts -->
@@ -11,6 +14,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/style.css" />
+  <script src="https://js.stripe.com/v3/"></script> <!-- Stripe for checkout -->
 </head>
 <body>
   <!-- Header -->
@@ -89,94 +93,4 @@
           </div>
           <div class="body">
             <h3>Bag</h3>
-            <p class="sub">Trendy & practical</p>
-            <div class="pills"><span class="pill">Lightweight</span><span class="pill">Stylish</span></div>
-            <div class="price" data-id="bag">from $35</div>
-            <button class="btn add-to-cart">Add to Cart</button>
-          </div>
-        </article>
-
-        <!-- Leather Goods -->
-        <article class="card product u3" data-product="leather">
-          <div class="main-viewport">
-            <div class="main-track">
-              <div class="slide">
-                <img src="assets/images/leather/1.jpg" alt="Leather Goods 1" loading="lazy">
-              </div>
-            </div>
-          </div>
-          <div class="body">
-            <h3>Leather Goods</h3>
-            <p class="sub">Durable & premium</p>
-            <div class="pills"><span class="pill">Classic</span><span class="pill">Long-lasting</span></div>
-            <div class="price" data-id="leather">from $60</div>
-            <button class="btn add-to-cart">Add to Cart</button>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- Customize -->
-  <section id="custom">
-    <div class="container">
-      <h2>Customize Your Case</h2>
-      <form id="custom-form" class="section-narrow" action="/upload" method="POST" enctype="multipart/form-data">
-        <label for="image-upload">Choose Image (PNG/JPEG &lt; 10MB)</label>
-        <div class="file-field" style="margin-top:8px">
-          <label class="file-btn" for="image-upload">Choose File</label>
-          <span id="file-name" class="file-name">no file selected</span>
-          <input id="image-upload" class="input-file" type="file" accept="image/png, image/jpeg" name="image-upload" />
-        </div>
-        <div class="preview-box" id="preview-box"><img id="preview-image" alt="Preview" /></div>
-        <button type="submit" class="btn alt block" style="margin-top:10px">Upload</button>
-      </form>
-    </div>
-  </section>
-
-  <!-- About -->
-  <section id="about">
-    <div class="container">
-      <h2>About Us</h2>
-      <p class="section-desc">
-        All In, Beyond Results.
-      </p>
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact">
-    <div class="container">
-      <h2>Contact Us</h2>
-      <form id="contact-form" class="section-narrow">
-        <input type="text" class="input" placeholder="Name" required />
-        <input type="email" class="input" placeholder="Email" required />
-        <textarea class="input textarea" placeholder="Message" required></textarea>
-        <button type="submit" class="btn alt block" style="margin-top:8px">Send</button>
-        <p class="helper">We usually reply within 24 hours.</p>
-      </form>
-    </div>
-  </section>
-
-  <!-- Cart -->
-  <section id="cart">
-    <div class="container">
-      <h2>Your Cart</h2>
-      <div id="cart-items" class="grid"></div>
-      <div class="total">Total: $0</div>
-      <button class="btn" id="checkout-btn">Checkout</button>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer id="site-footer">
-    <p>United States</p>
-    <p>Copyright © 2025 AIXX Inc. All rights reserved.</p>
-  </footer>
-
-  <!-- Theme toggle button -->
-  <button id="theme-toggle" aria-label="Toggle dark mode">🌙</button>
-
-  <script src="js/main.js"></script>
-</body>
-</html>
+            <p
