@@ -2,11 +2,21 @@ name = "casei-backend"
 main = "src/index.js"
 compatibility_date = "2025-10-04"
 
+# 自定义环境变量（在 Dashboard 填真实值更安全）
+[vars]
+R2_PUBLIC_URL = "https://r2-public-bucket-domain"   # 你的 R2 public 域名（如自定义域）
+CONTACT_RECEIVER = "owner@xxkit.com"
+MAIL_FROM = "no-reply@xxkit.com"
+
 [[d1_databases]]
 binding = "DB"
 database_name = "casei-db"
-database_id = "your-database-id"  # 从Dashboard复制
+database_id = "xxxx-xxxx-xxxx"  # Dashboard 复制
 
 [[r2_buckets]]
 binding = "UPLOADS_BUCKET"
-bucket_name = "casei-uploads"  # 您的R2桶名
+bucket_name = "casei-uploads"   # 你的 R2 桶名
+
+# 在 Dashboard > Settings > Variables 里添加密钥，避免明文
+# SENDGRID_API_KEY
+# STRIPE_SECRET_KEY
