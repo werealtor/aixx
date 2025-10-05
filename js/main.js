@@ -84,12 +84,15 @@ function initUploadPreview() {
 /* ========== 产品轮播 + 价格联动 + 库存检查 ========== */
 async function initProducts() {
   try {
-    const res = await fetch("config.json?v=" + Date.now(), { cache: "no-store" });
-    if (!res.ok) throw new Error("config load failed");
+    const res = await fetch("/config.json?v=" + Date.now(), { cache: "no-store" });  // 使用绝对路径避免相对路径问题
+    if (!res.ok) {
+      throw new Error(`Failed to load config.json: ${res.status} ${res.statusText}`);
+    }
     const data = await res.json();
     if (Array.isArray(data?.products)) setupProducts(data.products);
   } catch (e) {
-    console.error(e);
+    console.error("InitProducts Error:", e);
+    alert(`Error: ${e.message}`);
     document.querySelectorAll('.card').forEach(card => {
       card.querySelector('.main-viewport').innerHTML += '<p style="text-align:center;color:red;">加载失败，请刷新重试</p>';
     });
