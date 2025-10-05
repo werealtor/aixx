@@ -3,44 +3,60 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Minimal, premium, personal cases and accessories designed by Aixx in California. Shop jewelry, bags, leather goods, and customize your own." />
-  <meta name="keywords" content="custom cases, premium accessories, jewelry, bags, leather goods" />
+  <meta name="description" content="Minimal, premium, personal cases and accessories designed by AIXX in California. Shop jewelry, bags, leather goods, and customize your own." />
+  <meta name="keywords" content="custom cases, premium accessories, jewelry, bags, leather goods, Case&i, AIXX" />
   <meta name="theme-color" content="#001f3f" />
   <title>Case&i — Minimal · Premium · Personal</title>
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Preconnects -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-  <link rel="stylesheet" href="css/style.css" />
-  <script src="https://js.stripe.com/v3/"></script> <!-- Stripe for checkout -->
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/css/style.css" />
+
+  <!-- Stripe (async) -->
+  <script async src="https://js.stripe.com/v3/"></script>
+
+  <!-- Basic SEO -->
+  <link rel="canonical" href="https://xxkit.com/" />
+  <meta property="og:title" content="Case&i — Minimal · Premium · Personal" />
+  <meta property="og:description" content="Designed by AIXX in California. Jewelry, bags, leather goods, and custom cases." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://xxkit.com/" />
+  <meta property="og:image" content="https://xxkit.com/assets/og-cover.jpg" />
 </head>
 <body>
   <!-- Header -->
-  <header id="site-header">
+  <header id="site-header" role="banner">
     <div class="top-nav-container container">
-      <a href="#" class="logo">Case&i</a>
+      <a href="/" class="logo" aria-label="Case and i home">Case&i</a>
       <button class="menu-icon" aria-label="Toggle menu" aria-expanded="false">⋯</button>
-      <div class="top-nav-wrap">
-        <nav class="top-nav" aria-label="Main">
+      <div class="top-nav-wrap" aria-hidden="true">
+        <nav class="top-nav" aria-label="Main navigation">
           <a href="#products">Products</a>
           <a href="#custom">Customize</a>
           <a href="#about">About</a>
           <a href="#contact">Contact</a>
-          <a href="#cart" class="cart-icon">🛒 <span id="cart-count">0</span></a>
+          <a href="#cart" class="cart-icon" aria-label="Cart">
+            🛒 <span id="cart-count" aria-live="polite">0</span>
+          </a>
         </nav>
       </div>
     </div>
   </header>
 
   <!-- Hero -->
-  <section id="hero">
+  <section id="hero" aria-label="Brand hero">
     <div class="container">
       <div class="hero-frame" aria-label="Brand video">
         <video
           class="hero-media"
-          src="assets/videos/hero.mp4"
+          src="/assets/videos/hero.mp4"
+          poster="/assets/images/hero-poster.jpg"
           autoplay
           muted
           loop
@@ -51,8 +67,8 @@
     </div>
     <div class="container hero-cta">
       <h1>Minimal · Premium · Personal</h1>
-      <p>Designed by Aixx in California</p>
-      <nav class="nav">
+      <p>Designed by AIXX in California</p>
+      <nav class="nav" aria-label="Hero actions">
         <a href="#products" class="btn">Shop Products</a>
         <a href="#custom" class="btn alt">Customize Now</a>
       </nav>
@@ -60,16 +76,16 @@
   </section>
 
   <!-- Products -->
-  <section id="products">
+  <section id="products" aria-labelledby="products-title">
     <div class="container">
-      <h2 class="title">Our Products</h2>
+      <h2 class="title" id="products-title">Our Products</h2>
       <div class="grid products-grid">
         <!-- Jewelry -->
-        <article class="card product u3" data-product="jewelry">
-          <div class="main-viewport">
+        <article class="card product u3" data-product="jewelry" aria-label="Jewelry">
+          <div class="main-viewport" tabindex="0">
             <div class="main-track">
               <div class="slide">
-                <img src="assets/images/jewelry/1.jpg" alt="Jewelry 1" loading="lazy">
+                <img src="/assets/images/jewelry/1.jpg" alt="Jewelry 1" loading="lazy">
               </div>
             </div>
           </div>
@@ -83,11 +99,11 @@
         </article>
 
         <!-- Bag -->
-        <article class="card product u3" data-product="bag">
-          <div class="main-viewport">
+        <article class="card product u3" data-product="bag" aria-label="Bag">
+          <div class="main-viewport" tabindex="0">
             <div class="main-track">
               <div class="slide">
-                <img src="assets/images/bag/1.jpg" alt="Bag 1" loading="lazy">
+                <img src="/assets/images/bag/1.jpg" alt="Bag 1" loading="lazy">
               </div>
             </div>
           </div>
@@ -101,11 +117,11 @@
         </article>
 
         <!-- Leather Goods -->
-        <article class="card product u3" data-product="leather">
-          <div class="main-viewport">
+        <article class="card product u3" data-product="leather" aria-label="Leather goods">
+          <div class="main-viewport" tabindex="0">
             <div class="main-track">
               <div class="slide">
-                <img src="assets/images/leather/1.jpg" alt="Leather Goods 1" loading="lazy">
+                <img src="/assets/images/leather/1.jpg" alt="Leather goods 1" loading="lazy">
               </div>
             </div>
           </div>
@@ -122,16 +138,15 @@
   </section>
 
   <!-- Customize -->
-  <section id="custom">
+  <section id="custom" aria-labelledby="custom-title">
     <div class="container">
-      <h2>Customize Your Case</h2>
-      <form id="custom-form" class="section-narrow" action="/upload" method="POST" enctype="multipart/form-data">
+      <h2 id="custom-title">Customize Your Case</h2>
+      <form id="custom-form" class="section-narrow" action="/upload" method="POST" enctype="multipart/form-data" novalidate>
         <label for="device-model">Device Model</label>
         <select id="device-model" name="device_model" class="input" required>
           <option value="">Select model</option>
           <option value="iPhone 17">iPhone 17</option>
           <option value="iPhone 17 Pro">iPhone 17 Pro</option>
-          <!-- Add more options -->
         </select>
         <label for="image-upload">Choose Image (PNG/JPEG &lt; 10MB)</label>
         <div class="file-field" style="margin-top:8px">
@@ -139,30 +154,28 @@
           <span id="file-name" class="file-name">no file selected</span>
           <input id="image-upload" class="input-file" type="file" accept="image/png, image/jpeg" name="image-upload" required />
         </div>
-        <div class="preview-box" id="preview-box"><img id="preview-image" alt="Preview" loading="lazy" /></div>
+        <div class="preview-box" id="preview-box" aria-live="polite"><img id="preview-image" alt="Preview" loading="lazy" /></div>
         <button type="submit" class="btn alt block" style="margin-top:10px">Upload</button>
       </form>
     </div>
   </section>
 
   <!-- About -->
-  <section id="about">
+  <section id="about" aria-labelledby="about-title">
     <div class="container">
-      <h2>About Us</h2>
-      <p class="section-desc">
-        All In, Beyond Results.
-      </p>
+      <h2 id="about-title">About Us</h2>
+      <p class="section-desc">All In, Beyond Results.</p>
     </div>
   </section>
 
   <!-- Contact -->
-  <section id="contact">
+  <section id="contact" aria-labelledby="contact-title">
     <div class="container">
-      <h2>Contact Us</h2>
-      <form id="contact-form" class="section-narrow">
-        <input type="text" class="input" placeholder="Name" required aria-label="Name" />
-        <input type="email" class="input" placeholder="Email" required aria-label="Email" />
-        <textarea class="input textarea" placeholder="Message" required aria-label="Message"></textarea>
+      <h2 id="contact-title">Contact Us</h2>
+      <form id="contact-form" class="section-narrow" novalidate>
+        <input type="text" class="input" placeholder="Name" name="name" required aria-label="Name" />
+        <input type="email" class="input" placeholder="Email" name="email" required aria-label="Email" />
+        <textarea class="input textarea" placeholder="Message" name="message" required aria-label="Message"></textarea>
         <button type="submit" class="btn alt block" style="margin-top:8px">Send</button>
         <p class="helper">We usually reply within 24 hours.</p>
       </form>
@@ -170,17 +183,17 @@
   </section>
 
   <!-- Cart -->
-  <section id="cart">
+  <section id="cart" aria-labelledby="cart-title">
     <div class="container">
-      <h2>Your Cart</h2>
+      <h2 id="cart-title">Your Cart</h2>
       <div id="cart-items" class="grid"></div>
-      <div class="total">Total: $0</div>
+      <div class="total" aria-live="polite">Total: $0.00</div>
       <button class="btn" id="checkout-btn">Checkout</button>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer id="site-footer">
+  <footer id="site-footer" role="contentinfo">
     <p>United States</p>
     <p>Copyright © 2025 AIXX Inc. All rights reserved. <a href="/privacy">Privacy Policy</a></p>
   </footer>
@@ -188,6 +201,7 @@
   <!-- Theme toggle button -->
   <button id="theme-toggle" aria-label="Toggle dark mode">🌙</button>
 
-  <script src="js/main.js"></script>
+  <!-- Scripts -->
+  <script defer src="/js/main.js"></script>
 </body>
 </html>
