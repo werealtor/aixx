@@ -404,4 +404,4 @@ document.getElementById("checkout-btn").addEventListener("click", async () => {
   } catch (error) {
     alert(`Checkout failed: ${error.message}`);
   }
-}); 
+});
