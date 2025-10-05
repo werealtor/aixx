@@ -13,7 +13,8 @@
         "assets/images/jewelry/6.jpg",
         "assets/images/jewelry/7.jpg"
       ],
-      "price": [22, 24, 26, 28, 30, 32, 34]
+      "price": [22, 24, 26, 28, 30, 32, 34],
+      "stock": [10, 8, 5, 3, 0, 10, 7]
     },
     {
       "id": "bag",
@@ -27,7 +28,8 @@
         "assets/images/bag/6.jpg",
         "assets/images/bag/7.jpg"
       ],
-      "price": [35, 37, 39, 41, 43, 45, 49]
+      "price": [35, 37, 39, 41, 43, 45, 49],
+      "stock": [10, 8, 5, 3, 0, 10, 7]
     },
     {
       "id": "leather",
@@ -41,7 +43,8 @@
         "assets/images/leather/6.jpg",
         "assets/images/leather/7.jpg"
       ],
-      "price": [60, 65, 70, 75, 80, 85, 90]
+      "price": [60, 65, 70, 75, 80, 85, 90],
+      "stock": [10, 8, 5, 3, 0, 10, 7]
     }
   ]
 }
